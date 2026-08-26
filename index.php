@@ -138,16 +138,20 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("System Loaded: Initializing security checks...");
     // 1. Auto-display the current captcha value upon load
     const captchaDisplayElement = document.getElementById('captchaDisplay');
-    if (<?php echo $current_captcha ? 'JSON.stringify($current_captcha)' ?>) {
+<?php if (!empty($current_captcha)): ?>
+    if (captchaDisplayElement) {
         captchaDisplayElement.textContent = "Code: <?php echo htmlspecialchars($current_captcha); ?>";
     }
+<?php endif; ?>
 
     // 2. Setup AJAX submission handler (Highly recommended over standard form submit)
-    const form = document.getElementById('harvestForm');
+   const form = document.getElementById('harvestForm');
+if (form) {
     form.addEventListener('submit', function(e) {
-        // AJAX logic goes here... prevents default, collects all data, sends to script
+        // AJAX logic
         console.log("AJAX Submission Handler activated.");
     });
+}
 });
 </script>
 
