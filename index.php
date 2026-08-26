@@ -12,7 +12,7 @@ try {
     // Establish PDO Connection (Must be placed where you handle connections)
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+}
     // 1. Handle Form Submission (The core action)
     $message = '';
     $success_class = 'success';
