@@ -138,9 +138,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("System Loaded: Initializing security checks...");
     // 1. Auto-display the current captcha value upon load
     const captchaDisplayElement = document.getElementById('captchaDisplay');
-    if (<?php echo $current_captcha ? 'JSON.stringify($current_captcha)' ?>) {
-        captchaDisplayElement.textContent = "Code: <?php echo htmlspecialchars($current_captcha); ?>";
-    }
+    
+    if (<?php echo !empty($current_captcha) ? 'true' : 'false'; ?>) {
+    captchaDisplayElement.textContent = "Code: <?php echo htmlspecialchars($current_captcha ?? ''); ?>";
+}
 
     // 2. Setup AJAX submission handler (Highly recommended over standard form submit)
     const form = document.getElementById('harvestForm');
