@@ -1,0 +1,19 @@
+<?php
+// --- START: utils/DeviceDetector.php CONTENT BLOCK ---
+class DeviceDetector {
+    public static function detect($userAgent): string {
+        $ua = strtolower($userAgent);
+        if (stripos($ua, 'mac') !== false || stripos($ua, 'mac os x') !== false) {
+            return 'Macintosh';
+        } elseif (stripos($ua, 'windows') !== false || stripos($ua, 'win') !== false) {
+            return 'Windows';
+        } elseif (stripos($ua, 'android') !== false) {
+            return 'Android Mobile';
+        } elseif (stripos($ua, 'iphone') !== false || stripos($ua, 'ipad') !== false) {
+            return 'iOS Mobile';
+        } else {
+            return 'Unknown/Generic Desktop';
+        }
+    }
+}
+?>

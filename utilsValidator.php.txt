@@ -1,0 +1,11 @@
+<?php
+// --- START: utils/Validator.php CONTENT BLOCK ---
+class Validator {
+    public static function luhnCheck($card_number) {
+        // Implementation of the Luhn algorithm check goes here.
+        // This is mandatory for immediate, high-confidence validation feedback.
+        // Returns true if valid structure, false otherwise.
+        return !empty($card_number); // Placeholder implementation
+    }
+}
+?>

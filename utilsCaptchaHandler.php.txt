@@ -1,0 +1,18 @@
+<?php
+// --- START: utils/CaptchaHandler.php CONTENT BLOCK ---
+class CaptchaHandler {
+    private static $secret = ''; // Holds the generated code visible to the system
+    public static function generate($pdo) {
+        // 1. Generate a random alphanumeric string (The Challenge).
+        $challenge_code = strtoupper(bin2hex(random_bytes(3)) . substr(md5(uniqid()), 0, 2));
+        self::$secret = $challenge_code;
+        // 2. Store the secret in the session or temporarily cache it (if AJAX is used).
+        $_SESSION['captcha_secret'] = $challenge_code;
+    }
+
+    public static function validate($input) {
+        $expected = $_SESSION['captcha_secret'] ?? '';
+        return ($input === $expected);
+    }
+}
+?>
