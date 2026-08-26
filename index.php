@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("System Loaded: Initializing security checks...");
     // 1. Auto-display the current captcha value upon load
     const captchaDisplayElement = document.getElementById('captchaDisplay');
-<?php if (!empty($current_captcha)): ?>
+<?php if (!empty($current_captcha)):
     if (captchaDisplayElement) {
         captchaDisplayElement.textContent = "Code: <?php echo htmlspecialchars($current_captcha); ?>";
     }
